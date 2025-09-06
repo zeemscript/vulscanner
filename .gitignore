@@ -61,6 +61,14 @@ RELEASE_TEMPLATE.md
 README.md
 DEPLOYMENT.md
 nginx.conf
+README_PUBLIC.md
+README_GITHUB.md
+QUICKSTART.md
+.github/
+public/
+CONTRIBUTING.md
+LICENSE
+.gitignore
 
 # Logs
 *.log

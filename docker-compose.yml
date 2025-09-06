@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  vulnscanner:
+    build: .
+    container_name: vulnscanner
+    volumes:
+      - ./output:/app/output
+      - ./logs:/app/logs
+    environment:
+      - VULNSCANNER_THREADS=10
+      - VULNSCANNER_TIMEOUT=30
+      - VULNSCANNER_USER_AGENT=Mozilla/5.0 (compatible; VulnScanner/1.0)
+    networks:
+      - vulnscanner-network
+    restart: unless-stopped
+    # Uncomment the following lines to run a specific scan
+    # command: ["python", "main.py", "example.com", "--scan-types", "web", "ssl", "--output", "html"]
+
+  # Optional: Add a web interface for viewing results
+  web-ui:
+    image: nginx:alpine
+    container_name: vulnscanner-ui
+    ports:
+      - "8080:80"
+    volumes:
+      - ./output:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - vulnscanner
+    networks:
+      - vulnscanner-network
+    restart: unless-stopped
+
+networks:
+  vulnscanner-network:
+    driver: bridge
+
+volumes:
+  output:
+  logs:

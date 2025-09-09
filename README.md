@@ -52,7 +52,7 @@ python main.py yoursite.com --output json --output-file security_report
 
 ### Technology Stack Analysis
 
-- **Frontend**: React, Angular, Vue.js, Next.js, jQuery, Bootstrap
+- **Frontend**: React.Js, Angular, Vue.js, Next.js, jQuery, Bootstrap
 - **Backend**: Node.js, Python, PHP, Java, .NET frameworks
 - **CMS**: WordPress, Drupal, Joomla with version-specific vulnerabilities
 - **Analytics**: Google Analytics, Facebook Pixel, tracking services

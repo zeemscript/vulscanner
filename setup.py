@@ -132,7 +132,7 @@ def main():
     
     # Install system dependencies
     if not install_system_dependencies():
-        print("⚠️  System dependencies installation failed, but continuing...")
+        print("⚠️  System dependencies installation failed , but continuing ...")
     
     # Create environment file
     create_env_file()

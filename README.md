@@ -1,69 +1,71 @@
-# 🔍 AI-Powered Vulnerability Scanner
+# 🔍 VulnScan AI - AI-Powered Vulnerability Scanner
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](Dockerfile)
+[![PyPI](https://img.shields.io/badge/PyPI-vulnscan--ai-blue.svg)](https://pypi.org/project/vulnscan-ai/)
 [![AI-Powered](https://img.shields.io/badge/AI-Powered-purple.svg)](#)
 
 > **The developer's best friend for pre-production security testing** 🚀
 
 A lightweight, AI-powered vulnerability scanner that helps developers identify security issues before pushing to production. Perfect for CI/CD pipelines, local development, and quick security assessments.
 
-## ✨ Why This Scanner?
+## ✨ Why VulnScan AI?
 
 - **🤖 AI-Powered**: Intelligent risk assessment and actionable recommendations
 - **⚡ Lightning Fast**: Parallel scanning with configurable batch sizes
 - **🎯 Developer-Focused**: Simple CLI, clear output, easy integration
 - **🔍 Comprehensive**: Technology stack analysis, API security, vulnerability detection
-- **🐳 Docker Ready**: One-command deployment with no setup required
+- **📦 Easy Install**: One command installation via pip
 - **💰 Free & Open Source**: No licensing fees, full transparency
 
 ## 🚀 Quick Start
 
-### One-Command Setup
+### Install from PyPI
 
 ```bash
-git clone https://github.com/yourusername/vulnscanner.git && cd vulnscanner && pip install -r requirements.txt && python main.py example.com
+pip install vulnscan-ai
 ```
 
-### Docker (Even Easier!)
+### Basic Usage
 
 ```bash
-docker run -it vulnscanner python main.py yoursite.com
+# Scan a website
+vulnscan example.com
+
+# Scan with specific options
+vulnscan example.com --scan-types web ssl --output html
+
+# High-performance scanning
+vulnscan example.com --threads 20 --batch-size 50
 ```
 
 ## 🎯 Essential Commands
 
 ```bash
 # Basic security scan
-python main.py yourwebsite.com
+vulnscan yourwebsite.com
 
 # Pre-production check
-python main.py localhost:3000 --scan-types web --timeout 30
+vulnscan localhost:3000 --scan-types web --timeout 30
 
 # API security focus
-python main.py api.yoursite.com --scan-types web --batch-size 50
+vulnscan api.yoursite.com --scan-types web --batch-size 50
 
 # Custom output
-python main.py yoursite.com --output json --output-file security_report
+vulnscan yoursite.com --output json --output-file security_report
+
+# Help
+vulnscan --help
 ```
 
 ## 🔍 What It Checks
 
 ### Technology Stack Analysis
 
-- **Frontend**: React.Js, Angular, Vue.js, Next.js, jQuery, Bootstrap
+- **Frontend**: React.js, Angular, Vue.js, Next.js, jQuery, Bootstrap
 - **Backend**: Node.js, Python, PHP, Java, .NET frameworks
 - **CMS**: WordPress, Drupal, Joomla with version-specific vulnerabilities
 - **Analytics**: Google Analytics, Facebook Pixel, tracking services
-
-### API Security
-
-- **Authentication**: Public vs protected endpoint detection
-- **CORS**: Dangerous wildcard origins and misconfigurations
-- **Rate Limiting**: Missing protection headers
-- **Sensitive Endpoints**: Admin, auth, config, debug APIs
-- **Content Analysis**: Documentation exposure, error disclosure
 
 ### Security Vulnerabilities
 
@@ -71,6 +73,13 @@ python main.py yoursite.com --output json --output-file security_report
 - **Security Headers**: CSP, HSTS, X-Frame-Options, and more
 - **Information Disclosure**: Server info, error handling, sensitive files
 - **Outdated Software**: Technologies with known security issues
+
+### API Security
+
+- **Authentication**: Public vs protected endpoint detection
+- **CORS**: Dangerous wildcard origins and misconfigurations
+- **Rate Limiting**: Missing protection headers
+- **Sensitive Endpoints**: Admin, auth, config, debug APIs
 
 ## 📊 Sample Output
 
@@ -81,15 +90,18 @@ Frontend Technologies:
   • React.js v16.8.0 [HIGH] (OUTDATED)
   • jQuery v3.4.1 [MEDIUM] (OUTDATED)
 
-API Security:
-  • 5 public API endpoints detected
-  • Missing rate limiting on 3 endpoints
-  • CORS misconfiguration found
+Technology Security Summary:
+  • High Risk Technologies: 1
+  • Medium Risk Technologies: 1
+  • Low Risk Technologies: 0
+  • Outdated Technologies: 2
 
-Security Summary:
-  • High Risk: 3 technologies
-  • Medium Risk: 1 technologies
-  • Outdated: 4 technologies
+HIGH FINDINGS:
+┌────────────────────────┬───────────┬──────────┬────────────────────────────┐
+│ Target                 │ Scan Type │ Category │ Finding                    │
+├────────────────────────┼───────────┼──────────┼────────────────────────────┤
+│ example.com            │ web       │ csrf     │ Form without CSRF protection│
+└────────────────────────┴───────────┴──────────┴────────────────────────────┘
 
 🤖 AI-POWERED ANALYSIS
 Risk Level: High
@@ -103,38 +115,56 @@ Risk Score: 67/100
 5. Update jQuery to latest version
 ```
 
-## 🛠️ Installation
+## 🛠️ Installation Options
+
+### Option 1: PyPI (Recommended)
+
+```bash
+pip install vulnscan-ai
+```
+
+### Option 2: From Source
+
+```bash
+# Clone repository
+git clone https://github.com/zeemscript/vulnscanner.git
+cd vulnscanner
+
+# Install in development mode
+pip install -e .
+```
 
 ### Prerequisites
 
 - Python 3.8+
-- pip
-- nmap (for port scanning)
-- nikto (for web server scanning)
+- nmap (for port scanning) - `brew install nmap` or `sudo apt install nmap`
+- nikto (for web server scanning) - `brew install nikto` or `sudo apt install nikto`
 
-### Quick Install
-
-```bash
-# Clone repository
-git clone https://github.com/yourusername/vulnscanner.git
-cd vulnscanner
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run scanner
-python main.py yoursite.com
-```
-
-### Docker Install
+## 🔧 Advanced Usage
 
 ```bash
-# Build image
-docker build -t vulnscanner .
+# High-performance scanning
+vulnscan yoursite.com --threads 20 --batch-size 50
 
-# Run scanner
-docker run -it vulnscanner python main.py yoursite.com
+# Specific scan types
+vulnscan yoursite.com --scan-types web ssl
+
+# Custom output formats
+vulnscan yoursite.com --output html --output-file report
+
+# CI/CD integration
+vulnscan $TARGET_URL --output json --no-save | jq '.risk_score'
+
+# Full command options
+vulnscan --help
 ```
+
+## 📈 Performance
+
+- **Lightweight**: Minimal dependencies, fast startup
+- **Fast**: Parallel scanning with configurable batch sizes
+- **Efficient**: Smart caching and minimal resource usage
+- **Scalable**: Handles everything from localhost to enterprise sites
 
 ## 🎯 Perfect For
 
@@ -144,32 +174,15 @@ docker run -it vulnscanner python main.py yoursite.com
 - **🚀 Startups**: Affordable security testing
 - **🎓 Students**: Learning web security concepts
 
-## 📈 Performance
-
-- **Lightweight**: < 50MB Docker image
-- **Fast**: Parallel scanning with configurable batch sizes
-- **Efficient**: Smart caching and minimal resource usage
-- **Scalable**: Handles everything from localhost to enterprise sites
-
-## 🔧 Advanced Usage
-
-```bash
-# High-performance scanning
-python main.py yoursite.com --threads 20 --batch-size 50
-
-# Specific scan types
-python main.py yoursite.com --scan-types web ssl
-
-# Custom output formats
-python main.py yoursite.com --output html --output-file report
-
-# CI/CD integration
-python main.py $TARGET_URL --output json --no-save | jq '.risk_score'
-```
-
 ## 🤝 Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
 
 ## 📄 License
 
@@ -181,10 +194,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - AI-powered analysis using machine learning techniques
 - Inspired by the need for developer-friendly security tools
 
+## 📚 Documentation
+
+- [Quick Start Guide](QUICKSTART.md)
+- [Repository Structure](REPOSITORY_STRUCTURE.md)
+- [Contributing Guidelines](CONTRIBUTING.md)
+
 ---
 
-**Ready to secure your web applications?** Start with `python main.py yoursite.com` and see the magic happen! ✨
+**Ready to secure your web applications?** Start with `vulnscan yoursite.com` and see the magic happen! ✨
 
-[![Star](https://img.shields.io/github/stars/yourusername/vulnscanner?style=social)](https://github.com/yourusername/vulnscanner)
-[![Fork](https://img.shields.io/github/forks/yourusername/vulnscanner?style=social)](https://github.com/yourusername/vulnscanner)
-[![Watch](https://img.shields.io/github/watchers/yourusername/vulnscanner?style=social)](https://github.com/yourusername/vulnscanner)
+[![Star](https://img.shields.io/github/stars/zeemscript/vulnscanner?style=social)](https://github.com/zeemscript/vulnscanner)
+[![Fork](https://img.shields.io/github/forks/zeemscript/vulnscanner?style=social)](https://github.com/zeemscript/vulnscanner)
+[![Watch](https://img.shields.io/github/watchers/zeemscript/vulnscanner?style=social)](https://github.com/zeemscript/vulnscanner)

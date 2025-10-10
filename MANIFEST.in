@@ -1,0 +1,13 @@
+include README.md
+include LICENSE
+include requirements.txt
+include QUICKSTART.md
+recursive-include vulnscan_ai *.py
+recursive-include vulnscan_ai/ai *.py
+recursive-include vulnscan_ai/scanners *.py
+recursive-include vulnscan_ai/utils *.py
+global-exclude *.pyc
+global-exclude __pycache__
+global-exclude .git*
+global-exclude .DS_Store
+global-exclude *.egg-info

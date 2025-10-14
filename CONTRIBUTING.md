@@ -5,10 +5,10 @@ Thank you for your interest in contributing! We welcome contributions from devel
 ## 🚀 Quick Start
 
 1. **Fork** the repository
-2. **Clone** your fork: `git clone https://github.com/zeemscript/vulnscanner.git`
+2. **Clone** your fork: `git clone https://github.com/yourusername/vulnscanner.git`
 3. **Create** a feature branch: `git checkout -b feature/amazing-feature`
 4. **Make** your changes
-5. **Test** your changes: `pip install -e . && vulnscan --help`
+5. **Test** your changes: `python test_scanner.py`
 6. **Commit** your changes: `git commit -m 'Add amazing feature'`
 7. **Push** to your branch: `git push origin feature/amazing-feature`
 8. **Open** a Pull Request
@@ -26,17 +26,17 @@ Thank you for your interest in contributing! We welcome contributions from devel
 
 ```bash
 # Clone repository
-git clone https://github.com/zeemscript/vulnscanner.git
+git clone https://github.com/yourusername/vulnscanner.git
 cd vulnscanner
 
-# Install in development mode
-pip install -e .
+# Install dependencies
+pip install -r requirements.txt
 
-# Test installation
-vulnscan --help
+# Run tests
+python test_scanner.py
 
 # Test scanner
-vulnscan httpbin.org --scan-types web --timeout 10
+python main.py httpbin.org --scan-types web --timeout 10
 ```
 
 ### Docker Setup
@@ -45,8 +45,8 @@ vulnscan httpbin.org --scan-types web --timeout 10
 # Build image
 docker build -t vulnscanner .
 
-# Test installation
-docker run --rm vulnscanner vulnscan --help
+# Run tests
+docker run --rm vulnscanner python test_scanner.py
 ```
 
 ## 📋 Contribution Guidelines

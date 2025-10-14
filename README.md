@@ -26,6 +26,23 @@ A lightweight, AI-powered vulnerability scanner that helps developers identify s
 pip install vulnscan-ai
 ```
 
+### Development Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/zeemscript/vulnscanner.git
+cd vulnscanner
+
+# Install in development mode
+make install-dev
+
+# Run tests
+make test
+
+# Run example scan
+make scan-example
+```
+
 ### Basic Usage
 
 ```bash
@@ -37,6 +54,9 @@ vulnscan example.com --scan-types web ssl --output html
 
 # High-performance scanning
 vulnscan example.com --threads 20 --batch-size 50
+
+# Interactive mode with guided scanning
+vulnscan --interactive
 ```
 
 ## 🎯 Essential Commands
